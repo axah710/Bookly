@@ -1,4 +1,5 @@
 import 'package:bookly_app/features/splash/presintation/views/widgets/animated_sliding_text.dart';
+import 'package:bookly_app/features/splash/presintation/views/widgets/navigate_to_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -35,29 +36,29 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   void initState() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
-
-    slidingAnimation = Tween<Offset>(
-      begin: const Offset(0, 7),
-      end: Offset.zero,
-    ).animate(
-      animationController,
-    );
-
-    // Tween: This defines the range and values the animation operates over.
-    // In my case, Tween<Offset> specifies that the animation starts at
-    //an offset of (0, 7) and ends at an offset of (0, 0). This effectively
-    //means the animated object will move from a position 7 units down from
-    //its starting point to its final position aligned with its parent.
-
-    animationController.forward();
-
-    // Trigger The animationController...
-
     super.initState();
+    initSlidingAnimation();
+    navigateToHome();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+
+      // Why Stretch ? to let the image take all the width available...
+
+      children: [
+        Image.asset(
+          AssetsData.logo,
+        ),
+        const SizedBox(
+          height: 7,
+        ),
+        AnimatedSlidingText(slidingAnimation: slidingAnimation),
+      ],
+    );
   }
 
   @override
@@ -81,23 +82,27 @@ class _SplashViewBodyState extends State<SplashViewBody>
     // Must dispose any Controller may I have ...
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-
-      // Why Stretch ? to let the image take all the width available...
-
-      children: [
-        Image.asset(
-          AssetsData.logo,
-        ),
-        const SizedBox(
-          height: 7,
-        ),
-        AnimatedSlidingText(slidingAnimation: slidingAnimation),
-      ],
+  void initSlidingAnimation() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
     );
+
+    slidingAnimation = Tween<Offset>(
+      begin: const Offset(0, 7),
+      end: Offset.zero,
+    ).animate(
+      animationController,
+    );
+
+    // Tween: This defines the range and values the animation operates over.
+    // In my case, Tween<Offset> specifies that the animation starts at
+    //an offset of (0, 7) and ends at an offset of (0, 0). This effectively
+    //means the animated object will move from a position 7 units down from
+    //its starting point to its final position aligned with its parent.
+
+    animationController.forward();
+
+    // Trigger The animationController...
   }
 }
