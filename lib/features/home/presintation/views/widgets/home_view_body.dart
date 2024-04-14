@@ -8,8 +8,8 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.symmetric(
-        vertical: 40,
-        horizontal: 24,
+        vertical: 47.976,
+        horizontal: 26.4,
       ),
       child: Column(
         children: [
