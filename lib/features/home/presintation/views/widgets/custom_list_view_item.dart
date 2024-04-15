@@ -7,7 +7,9 @@ class CustomListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 24),
+      padding: const EdgeInsets.symmetric(
+        vertical: 24,
+      ),
       child: AspectRatio(
         aspectRatio: 2.7 / 4,
         child: Container(
