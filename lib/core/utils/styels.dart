@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class Styels {
   static const titleMedium = TextStyle(
-    fontSize: 22,
-    fontWeight: FontWeight.w600
+    fontSize: 19.8,
+    fontWeight: FontWeight.w700,
   );
 }
