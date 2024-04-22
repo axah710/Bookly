@@ -1,10 +1,11 @@
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/features/splash/presintation/views/widgets/animated_sliding_text.dart';
-import 'package:bookly_app/features/splash/presintation/views/widgets/navigate_to_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:bookly_app/core/utils/assets_data.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -105,4 +106,25 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
     // Trigger The animationController...
   }
+  void navigateToHome() {
+  Future.delayed(const Duration(seconds: 2), () {
+    GoRouter.of(context).push(
+      AppRouter.kHomeViewRoute,
+    );
+    // Use GoRouter to navigate to the HomeView
+
+    // Get.to(
+    //   () => const HomeView(),
+    //   transition: Transition.fade,
+    //   duration: kTranstionDuration,
+    // );
+  });
+}
+// Using get state mangament to navigate...
+// The function uses the Future.delayed method to delay the execution of the
+//code inside it by 2 seconds.
+// After the delay, the Get.to method is called to navigate to the HomeView.
+// The HomeView is passed as a callback function to the Get.to method.
+// The transition animation is set to Transition.fade and the duration is
+//set to kTranstionDuration (milliseconds: 256).
 }
