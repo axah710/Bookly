@@ -18,10 +18,16 @@ class BooklyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Bookly App',
       theme: ThemeData(
+//colorScheme: This defines the color scheme for the app. In this
+//case, it's set to a dark color scheme.
+// useMaterial3: This specifies whether to use Material 3 design.
+// scaffoldBackgroundColor: This sets the background color of the
+//scaffold. In this case, it's set to kPrimaryColor.
+// textTheme: This defines the text theme for the app. It uses the
+//Montserrat font family and applies it to the dark text theme.
         colorScheme: const ColorScheme.dark(),
-        useMaterial3: true,
         // brightness: Brightness.dark,
-      ).copyWith(
+        useMaterial3: true,
         scaffoldBackgroundColor: kPrimaryColor,
         textTheme: GoogleFonts.montserratTextTheme(
           ThemeData.dark().textTheme,
