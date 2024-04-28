@@ -26,6 +26,13 @@ class BooklyApp extends StatelessWidget {
 // textTheme: This defines the text theme for the app. It uses the
 //Montserrat font family and applies it to the dark text theme.
         colorScheme: const ColorScheme.dark(),
+        // iconButtonTheme: const IconButtonThemeData(
+        //   style: ButtonStyle(
+        //     iconColor: MaterialStatePropertyAll(
+        //       Colors.white,
+        //     ),
+        //   ),
+        // ),
         // brightness: Brightness.dark,
         useMaterial3: true,
         scaffoldBackgroundColor: kPrimaryColor,
