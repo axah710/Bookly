@@ -88,3 +88,8 @@ class BestSellerListViewItem extends StatelessWidget {
     );
   }
 }
+// SizedBox: This widget is used to give its child a specific size. The height
+// property of the SizedBox is set to 30% of the total screen height. This is 
+//achieved by MediaQuery.of(context).size.height * 0.3. MediaQuery is a widget 
+//that provides information about the media (like screen size) in which the app 
+//is being run.
