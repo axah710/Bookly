@@ -11,10 +11,12 @@ class CustomBookImage extends StatelessWidget {
         vertical: 24,
       ),
       child: AspectRatio(
-        aspectRatio: 2.7 / 4,
+        aspectRatio: 2.6 / 4,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(17.6),
+            borderRadius: BorderRadius.circular(
+              15.2,
+            ),
             color: const Color(0xfffebda6),
             image: const DecorationImage(
               image: AssetImage(AssetsData.testImage),
@@ -33,7 +35,7 @@ class CustomBookImage extends StatelessWidget {
 //is being run.
 // AspectRatio: This widget is the child of the SizedBox and is used to scale 
 //the size of its child widget according to a specific aspect ratio. The 
-//aspectRatio property is set to 2.7 / 4, which means the width of the
+//aspectRatio property is set to 2.6 / 4, which means the width of the
 // AspectRatio widget will be adjusted to maintain this ratio with the
 // height provided by the SizedBox.
 // The combination of these widgets ensures that the child of the 
