@@ -1,9 +1,7 @@
-import 'package:bookly_app/core/utils/styels.dart';
-import 'package:bookly_app/features/home/presintation/views/widgets/book_rating.dart';
 import 'package:bookly_app/features/home/presintation/views/widgets/books_action.dart';
+import 'package:bookly_app/features/home/presintation/views/widgets/books_details_section.dart';
 import 'package:bookly_app/features/home/presintation/views/widgets/custom_book_details_app_bar.dart';
-import 'package:bookly_app/features/home/presintation/views/widgets/custom_book_image.dart';
-import 'package:bookly_app/features/home/presintation/views/widgets/similar_books_list_view.dart';
+import 'package:bookly_app/features/home/presintation/views/widgets/similar_books_section.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,74 +11,49 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 27,
-      ),
-      child: Column(
-        children: [
-          const CustomBookDetailsAppBar(),
-          Padding(
+    return const CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          // In the context of BookDetailsViewBody, SliverFillRemaining
+          //is used to make sure that the content, which includes various
+          //widgets like CustomBookDetailsAppBar, CustomBookImage, and others,
+          // either exactly fills the available vertical space when there isn't
+          //enough content to naturally scroll, or becomes scrollable if the
+          //content overflows the screen height. This approach provides
+          //a flexible layout that adjusts nicely to different screen sizes
+          //and orientations, ensuring that the UI remains visually appealing
+          //and functionally practical across devices.
+          hasScrollBody: false,
+          // To avoid multi scroll views, hasScrollBody is set to false.
+          child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: width * 0.21,
+              horizontal: 27,
             ),
-            child: const CustomBookImage(),
-          ),
-          const SizedBox(
-            height: 17,
-          ),
-          Text(
-            "The Jungle Book",
-            style: Styels.textStyle33.copyWith(
-              fontWeight: FontWeight.w800,
-            ),
-          ),
-          const SizedBox(
-            height: 5.1,
-          ),
-          Opacity(
-            opacity: 0.70,
-            child: Text(
-              "Rudyard Kipling",
-              style: Styels.textStyle20.copyWith(
-                fontWeight: FontWeight.w600,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 18.9,
-          ),
-          const BookRating(
-            mainAxisAlignment: MainAxisAlignment.center,
-          ),
-          const SizedBox(
-            height: 38.85,
-          ),
-          const BooksAction(),
-          const SizedBox(
-            height: 47.5,
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "You Can Also Like ",
-              style: Styels.textStyle16.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
+            child: Column(
+              children: [
+                CustomBookDetailsAppBar(),
+                BookDetailsSection(),
+                BooksAction(),
+                Expanded(
+                  child: SizedBox(
+                    height: 47.5,
+                  ),
+                ),
+                // Take at least 47.5 hieght and if you have more than 47.5 height
+                // take it...
+                //  to create a flexible layout where the SizedBox
+                // takes up all the remaining vertical space.
+                //The Expanded widget ensures that the SizedBox expands
+                // to fill the available space.
+                SimilarBooksSection(),
+                SizedBox(
+                  height: 42,
+                ),
+              ],
             ),
           ),
-          const SizedBox(
-            height: 16.8,
-          ),
-          const SimilarBooksListView(),
-          const SizedBox(
-            height: 42,
-          ),
-        ],
-      ),
+        )
+      ],
     );
   }
 }
-
