@@ -10,7 +10,9 @@ void main() {
 }
 
 class BooklyApp extends StatelessWidget {
-  const BooklyApp({super.key});
+  const BooklyApp({
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
