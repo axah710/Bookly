@@ -10,3 +10,4 @@ class ApiService {
     return response.data;
   }
 }
+// Retuerned data type most of the time Map<String, dynamic> "JSON"...
