@@ -12,7 +12,7 @@ class ServerFailure extends Failure {
 // an error message string.
 //It serves as a base class for different types of failures.
 
-  factory ServerFailure.fromDioError(DioException dioException) {
+  factory ServerFailure.fromDioException(DioException dioException) {
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
         return ServerFailure('Connection timeout');
@@ -69,9 +69,9 @@ class ServerFailure extends Failure {
     } else if (statusCode == 404) {
       return ServerFailure('Your request not found, Please try later!');
     } else if (statusCode == 500) {
-      return ServerFailure('Internal Server error, Please try later');
+      return ServerFailure('Internal server error, Please try later');
     } else {
-      return ServerFailure('Opps There was an Error, Please try again');
+      return ServerFailure('Opps there was an error, Please try again');
     }
   }
   // ServerFailure.fromResponse factory constructor handles errors based

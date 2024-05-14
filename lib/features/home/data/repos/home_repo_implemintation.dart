@@ -15,7 +15,7 @@ class HomeRepoImlemintation extends HomeRepo {
   // HomeRepoImlemintation extends HomeRepo and includes an
   // instance of ApiService to make HTTP requests.
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBestNewsBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchNewstBooks() async {
     // This method fetches books that are free, related to programming,
     //and sorted by the newest first. It constructs a
     //specific endpoint using these parameters.
@@ -48,7 +48,7 @@ class HomeRepoImlemintation extends HomeRepo {
     } catch (e) {
       if (e is DioException) {
         return left(
-          ServerFailure.fromDioError(e),
+          ServerFailure.fromDioException(e),
         );
       }
       //  If there's an error (like a network issue handled by DioException),
