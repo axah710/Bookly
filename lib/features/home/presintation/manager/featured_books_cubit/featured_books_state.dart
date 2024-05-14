@@ -7,10 +7,11 @@ sealed class FeaturedBooksState extends Equatable {
 // related to the featured books feature.
 // It extends Equatable, which is a package in Dart that helps in overriding
 // the == operator and hashCode method to facilitate state comparison.
-// The props getter returns an empty list, which is used by Equatable
-//to determine equality between instances.
+
   @override
   List<Object> get props => [];
+  // The props getter returns an empty list, which is used by Equatable
+//to determine equality between instances.
 }
 
 final class FeaturedBooksInitial extends FeaturedBooksState {}
