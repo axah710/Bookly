@@ -13,10 +13,13 @@ class HomeRepoImlemintation extends HomeRepo {
   // This ApiService is used to make Dio requests to an external API.
   @override
   Future<Either<Failure, List<BookModel>>> fetchBestNewsBooks() async {
+    String sorting = "newest";
+    String subject = "programming";
+    String programmingBooksEndPoint =
+        "volumes?Filtering=free-ebooks&q=subject:$subject&sorting=$sorting";
     try {
       var data = await apiService.get(
-        endPoint:
-            "volumes?Filtering=free-ebooks&q=subject:programming&sorting=newest",
+        endPoint: programmingBooksEndPoint,
       );
       // it makes a call to the API using apiService.get()
       //with a specific endpoint that includes parameters to
