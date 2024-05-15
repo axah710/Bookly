@@ -110,7 +110,8 @@ class HomeRepoImlemintation extends HomeRepo {
 
   String getProgrammingBooksEndPoint(sorting) {
     const String subject = "programming";
-    return "volumes?Filtering=free-ebooks&q=subject:$subject&sorting=$sorting";
+    const String filtering = "free-ebooks";
+    return "volumes?Filtering=$filtering&q=subject:$subject&sorting=$sorting";
   }
 }
 // Here we will handel home repo "feature" implementation.
