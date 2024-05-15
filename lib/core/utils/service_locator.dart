@@ -18,8 +18,8 @@ void setupServiceLocator() {
       Dio(),
     ),
   );
-  getIt.registerSingleton<HomeRepoImlemintation>(
-    HomeRepoImlemintation(
+  getIt.registerSingleton<HomeRepoImplemintation>(
+    HomeRepoImplemintation(
       getIt.get<ApiService>(),
       // Recalling the ApiService singleton.
     ),

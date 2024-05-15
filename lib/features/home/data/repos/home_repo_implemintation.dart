@@ -5,9 +5,9 @@ import 'package:bookly_app/features/home/data/models/book_model/book_model.dart'
 import 'package:bookly_app/features/home/data/repos/home_repo.dart';
 import 'package:dio/dio.dart';
 
-class HomeRepoImlemintation extends HomeRepo {
+class HomeRepoImplemintation extends HomeRepo {
   ApiService apiService;
-  HomeRepoImlemintation(
+  HomeRepoImplemintation(
     this.apiService,
   );
 
