@@ -4,6 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
+//There is also a shortcut for creating a singleton instance of a class:
+// GetIt getIt = GetIt.I;
+
 // GetIt Instance:
 // final getIt = GetIt.instance;: This line creates a singleton instance of
 //GetIt, which is used to register and retrieve dependencies
