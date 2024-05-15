@@ -30,7 +30,7 @@ final class FeaturedBooksLoading extends FeaturedBooksState {}
 final class FeaturedBooksSucess extends FeaturedBooksState {
   final List<BookModel> books;
 
-  const FeaturedBooksSucess({required this.books});
+  const FeaturedBooksSucess(this.books);
 }
 // FeaturedBooksSuccess:
 // This class represents a successful state where the featured books have
@@ -43,7 +43,7 @@ final class FeaturedBooksSucess extends FeaturedBooksState {
 final class FeaturedBooksFailure extends FeaturedBooksState {
   final String errMessage;
 
-  const FeaturedBooksFailure({required this.errMessage});
+  const FeaturedBooksFailure( this.errMessage);
 }
 // FeaturedBooksFailure:
 // This class represents a failure state in fetching the featured books.
