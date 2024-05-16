@@ -11,7 +11,7 @@ class SearchViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: 17.6,
+        horizontal: 14.96,
       ),
       child: Column(
         children: [
