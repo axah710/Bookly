@@ -70,3 +70,13 @@ class BookModel extends Equatable {
     ];
   }
 }
+// BookModel class that extends Equatable, which is a package used in Dart to
+// facilitate value comparison in objects, making it easier to check if two
+// instances are equivalent based solely on their data fields rather 
+//than their identities.
+// This class is typically used in applications where book data is 
+//fetched from a remote source in JSON format, and the application 
+//needs to model this data in a structured way within the code. The 
+//use of Equatable helps in efficiently managing state changes in UI
+// frameworks like Flutter, by reducing unnecessary rebuilds when 
+//data hasn't actually changed.
