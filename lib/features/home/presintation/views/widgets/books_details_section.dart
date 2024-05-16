@@ -22,7 +22,10 @@ class BookDetailsSection extends StatelessWidget {
           //width (width * 0.21), the layout can adapt to different
           // screen sizes, ensuring that the UI looks
           //consistent across devices.
-          child: const CustomBookImage(),
+          child: const CustomBookImage(
+            urlImage:
+                'https://m.media-amazon.com/images/I/61G-D3wmkeL._AC_UF1000,1000_QL80_DpWeblab_.jpg',
+          ),
         ),
         const SizedBox(
           height: 17,
@@ -59,5 +62,3 @@ class BookDetailsSection extends StatelessWidget {
     );
   }
 }
-
-
