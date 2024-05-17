@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomBookImage extends StatelessWidget {
@@ -17,17 +18,30 @@ class CustomBookImage extends StatelessWidget {
         //maintains a consistent shape, regardless of changes in its overall
         // size. This is particularly useful for maintaining a consistent
         // layout across different screen sizes or orientations.
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(
-              15.2,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(
+            15.2,
+          ),
+          child: CachedNetworkImage(
+            imageUrl: urlImage,
+            fit: BoxFit.fill,
+            progressIndicatorBuilder: (
+              context,
+              url,
+              downloadProgress,
+            ) =>
+                Center(
+              child: CircularProgressIndicator(
+                value: downloadProgress.progress,
+              ),
             ),
-            // color: const Color(
-            //   0xfffebda6,
-            // ),
-            image: DecorationImage(
-              image: NetworkImage(urlImage),
-              fit: BoxFit.fill,
+            errorWidget: (
+              context,
+              url,
+              error,
+            ) =>
+                const Icon(
+              Icons.error,
             ),
           ),
         ),
@@ -35,6 +49,7 @@ class CustomBookImage extends StatelessWidget {
     );
   }
 }
+
 // SizedBox: This widget is used to give its child a specific size. The height
 // property of the SizedBox is set to 30% of the total screen height. This is
 //achieved by MediaQuery.of(context).size.height * 0.3. MediaQuery is a widget
