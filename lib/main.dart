@@ -28,7 +28,7 @@ class BooklyApp extends StatelessWidget {
           create: (context) => FeaturedBooksCubit(
             getIt.get<HomeRepoImplemintation>(),
           )..fetchFeaturedBooks(),
-          // .. Means triggr function imeadiately after create the cubit...
+          // .. Means triggr function immediately after create the cubit...
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(
