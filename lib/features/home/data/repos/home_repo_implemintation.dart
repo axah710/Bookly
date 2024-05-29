@@ -22,7 +22,7 @@ class HomeRepoImplemintation extends HomeRepo {
 
     try {
       var data = await apiService.get(
-        endPoint: getProgrammingBooksEndPoint("newest"),
+        endPoint: getProgrammingBooksEndPoint("newest", "computer science"),
       );
       // it makes a call to the API using apiService.get()
       //with a specific endpoint that includes parameters to
@@ -67,7 +67,7 @@ class HomeRepoImplemintation extends HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiService.get(
-        endPoint: getProgrammingBooksEndPoint("relevance"),
+        endPoint: getProgrammingBooksEndPoint("relevance", "programming"),
       );
       // it makes a call to the API using apiService.get()
       //with a specific endpoint that includes parameters to
@@ -108,10 +108,9 @@ class HomeRepoImplemintation extends HomeRepo {
     }
   }
 
-  String getProgrammingBooksEndPoint(sorting) {
-    const String subject = "programming";
+  String getProgrammingBooksEndPoint(sorting, subject) {
     const String filtering = "free-ebooks";
-    return "volumes?Filtering=$filtering&q=subject:$subject&sorting=$sorting";
+    return "volumes?Filtering=$filtering&q=$subject&sorting=$sorting";
   }
 }
 // Here we will handel home repo "feature" implementation.
