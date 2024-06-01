@@ -108,9 +108,55 @@ class HomeRepoImplemintation extends HomeRepo {
     }
   }
 
-  String getProgrammingBooksEndPoint(sorting, subject) {
-    const String filtering = "free-ebooks";
-    return "volumes?Filtering=$filtering&q=$subject&sorting=$sorting";
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+      {required String category}) async {
+    try {
+      var data = await apiService.get(
+        endPoint: getProgrammingBooksEndPoint("relevance", "programming"),
+      );
+      // it makes a call to the API using apiService.get()
+      //with a specific endpoint that includes parameters to
+      // filter and sort the books by programming subjects
+      //and only include free ebooks.
+      List<BookModel> books = [];
+      for (var item in data["items"]) {
+        books.add(
+          BookModel.fromJson(item),
+          // transfer item into BookModel instances and added to a list.
+        );
+      }
+      // The response is expected to contain a list of items,
+      // each representing a book. These items are then transformed
+      //into BookModel instances and added to a list.
+      return right(books);
+      // If the data fetching and processing are successful,
+      // it returns the list of books wrapped in a right()
+      //function (indicating success).
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioException(e),
+        );
+      }
+      //  If there's an error (like a network issue handled by DioException),
+      // it returns a Failure object wrapped in an Either type
+      // indicating failure (left).
+      // The method handles errors specifically catching DioException
+      //to handle network-related errors and other exceptions for general errors.
+      else {
+        return left(
+          ServerFailure(
+            e.toString(),
+          ),
+        );
+      }
+    }
   }
 }
+
 // Here we will handel home repo "feature" implementation.
+String getProgrammingBooksEndPoint(sorting, subject) {
+  const String filtering = "free-ebooks";
+  return "volumes?Filtering=$filtering&q=$subject&sorting=$sorting";
+}

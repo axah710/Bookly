@@ -5,6 +5,10 @@ import 'package:dartz/dartz.dart';
 abstract class HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchNewstBooks();
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks();
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({
+    required String category,
+  });
+
   //   Future<Either<Failure Class,List<TheModel>>>
 }
 // The code is an abstract class called HomeRepo that defines two methods:
