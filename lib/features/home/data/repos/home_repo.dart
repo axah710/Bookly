@@ -8,8 +8,12 @@ abstract class HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({
     required String category,
   });
-
   //   Future<Either<Failure Class,List<TheModel>>>
+  // Adding a repository (repo) is a good practice to
+  //separate the data layer from the presentation layer. By having a repository,
+  //you can abstract the data access logic, making it easier to switch between
+  //different data sources (e.g., API, local database) without affecting the
+  //rest of the application.
 }
 // The code is an abstract class called HomeRepo that defines two methods:
 // fetchBestSellersBooks and fetchFeaturedBooks.
