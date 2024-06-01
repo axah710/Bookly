@@ -22,13 +22,16 @@ class SimilarBooksListView extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
+              itemCount: state.books.length,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 8.8,
                   ),
                   child: CustomBookImage(
-                    urlImage: kDefaultImage,
+                    urlImage:
+                        state.books[index].volumeInfo.imageLinks?.thumbnail ??
+                            kDefaultImage,
                   ),
                 );
               },

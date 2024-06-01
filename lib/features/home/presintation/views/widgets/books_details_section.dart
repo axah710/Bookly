@@ -1,11 +1,13 @@
+import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/styels.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presintation/views/widgets/book_rating.dart';
 import 'package:bookly_app/features/home/presintation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
-
+  const BookDetailsSection({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -22,16 +24,19 @@ class BookDetailsSection extends StatelessWidget {
           //width (width * 0.21), the layout can adapt to different
           // screen sizes, ensuring that the UI looks
           //consistent across devices.
-          child: const CustomBookImage(
+          child: CustomBookImage(
             urlImage:
-                'https://m.media-amazon.com/images/I/61G-D3wmkeL._AC_UF1000,1000_QL80_DpWeblab_.jpg',
+                bookModel.volumeInfo.imageLinks?.thumbnail ?? kDefaultImage,
           ),
         ),
         const SizedBox(
           height: 17,
         ),
         Text(
-          "The Jungle Book",
+          bookModel.volumeInfo.title ?? 'No Title',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
           style: Styels.textStyle33.copyWith(
             fontWeight: FontWeight.w800,
           ),
@@ -42,7 +47,8 @@ class BookDetailsSection extends StatelessWidget {
         Opacity(
           opacity: 0.70,
           child: Text(
-            "Rudyard Kipling",
+            bookModel.volumeInfo.authors?[0] ?? 'No Author',
+            textAlign: TextAlign.center,
             style: Styels.textStyle20.copyWith(
               fontWeight: FontWeight.w600,
               fontStyle: FontStyle.italic,
@@ -52,10 +58,10 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 18.9,
         ),
-        const BookRating(
+        BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
-          rating: 2,
-          count: 3,
+          rating: bookModel.volumeInfo.averageRating ?? 0.0,
+          count: bookModel.volumeInfo.ratingsCount ?? 0,
         ),
         const SizedBox(
           height: 38.85,

@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presintation/views/widgets/books_action.dart';
 import 'package:bookly_app/features/home/presintation/views/widgets/books_details_section.dart';
 import 'package:bookly_app/features/home/presintation/views/widgets/custom_book_details_app_bar.dart';
@@ -7,11 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
-
+  const BookDetailsViewBody({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return CustomScrollView(
       slivers: [
         SliverFillRemaining(
           // In the context of BookDetailsViewBody, SliverFillRemaining
@@ -26,15 +27,17 @@ class BookDetailsViewBody extends StatelessWidget {
           hasScrollBody: false,
           // To avoid multi scroll views, hasScrollBody is set to false.
           child: Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 27,
             ),
             child: Column(
               children: [
-                CustomBookDetailsAppBar(),
-                BookDetailsSection(),
-                BooksAction(),
-                Expanded(
+                const CustomBookDetailsAppBar(),
+                BookDetailsSection(
+                  bookModel: bookModel,
+                ),
+                const BooksAction(),
+                const Expanded(
                   child: SizedBox(
                     height: 47.5,
                   ),
@@ -45,8 +48,8 @@ class BookDetailsViewBody extends StatelessWidget {
                 // takes up all the remaining vertical space.
                 //The Expanded widget ensures that the SizedBox expands
                 // to fill the available space.
-                SimilarBooksSection(),
-                SizedBox(
+                const SimilarBooksSection(),
+                const SizedBox(
                   height: 42,
                 ),
               ],
